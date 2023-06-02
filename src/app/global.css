@@ -1,0 +1,49 @@
+:root {
+    color-scheme: dark;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    margin-top: 5rem;
+    background-color: #2c2c2d;
+    color: #F9F9F9;
+}
+
+a {
+    color: aquamarine;
+    text-decoration: none;
+}
+
+a:hover {
+    color: lightskyblue;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th {
+    background-color: rgb(0, 117, 94);
+}
+
+table tr {
+    border: 1px solid #666;
+}
+
+table tr:nth-child(even) {
+    background-color: #383838;
+}
+
+table tr:nth-child(odd) {
+    background-color: #484848;
+}
+
+table tr td, table tr th {
+    padding: .5rem;
+}
+
