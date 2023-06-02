@@ -27,12 +27,6 @@ const RootLayout = async ({
           <Navbar />
           <Content>
             {children}
-            <div>
-              <ul>
-                <li><a href="https://github.dev/supabase/auth-helpers/tree/main/examples/nextjs-server-components">NextJS Server Components</a></li>
-                <li><a href="https://github.com/supabase-community/supabase-custom-claims">Supabase Custom Claims</a></li>
-              </ul>
-            </div>
           </Content>
       </SupabaseProvider>
     </body>
