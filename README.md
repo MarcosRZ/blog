@@ -17,6 +17,8 @@ npm run build && npm start
 
 - NextJS 13+
 
+- Typescript
+
 - Styled Components
 
 - Supabase
