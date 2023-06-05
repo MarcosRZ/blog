@@ -1,11 +1,11 @@
 'use client'
 
-import { useSupabase } from '@blog/auth/SupabaseProvider';
 import styled from '@emotion/styled';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';
 import { Button } from '../button/Button';
 import TextInput from '../Input/TextInput';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 type LoginState = { 
   email: string,
@@ -18,7 +18,7 @@ const Login = () => {
 
   const redirectedFrom = params.get('redirectedFrom');
 
-  const { supabase } = useSupabase();
+  const supabase = createClientComponentClient();
   
   const router = useRouter();
 

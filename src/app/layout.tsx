@@ -1,8 +1,9 @@
-import SupabaseProvider from "@blog/auth/SupabaseProvider";
+import SupabaseProvider from "@blog/auth/SessionProvider";
 import { Content } from "@blog/components/content/Content";
 import Navbar from "@blog/components/navbar/Navbar";
 import { Nunito } from "next/font/google"
 import './global.css';
+import StyledComponentsRegistry from "./styled/StyledComponentRegistry";
 
 export const revalidate = 0;
 
@@ -23,12 +24,14 @@ const RootLayout = async ({
 }) => (
   <html lang="en" style={nunito.style}>
     <body>
-      <SupabaseProvider>
+      <StyledComponentsRegistry>
+        <SupabaseProvider>
           <Navbar />
           <Content>
             {children}
           </Content>
-      </SupabaseProvider>
+        </SupabaseProvider>
+      </StyledComponentsRegistry>
     </body>
 
   </html>

@@ -1,12 +1,10 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 
 const Layout = async ({
   children,
-}: {
-  children: React.ReactNode
-}) => <>
-    <div>Whatever that should be in admin layout</div>
+}: PropsWithChildren) => <>
     <div>{children}</div>
   </>
 
 export default Layout
+

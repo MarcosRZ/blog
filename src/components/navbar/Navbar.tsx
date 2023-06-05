@@ -1,12 +1,14 @@
 'use client'
-import { useSupabase } from '@blog/auth/SupabaseProvider';
+import { useSessionSubscription } from '@blog/auth/SessionProvider';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import React from 'react'
 import { useRouter } from 'next/navigation';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 const Navbar = () => {
 
-  const { supabase, session } = useSupabase();
+  const supabase = createClientComponentClient();
+  const { session } = useSessionSubscription();
   const router = useRouter();
 
   const handleSignOut = async () => {

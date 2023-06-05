@@ -4,10 +4,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { Session, createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 
-import type { SupabaseClient } from "@supabase/auth-helpers-nextjs";
-
 type SupabaseContext = {
-  supabase: SupabaseClient;
   session: Session | null;
 };
 
@@ -18,7 +15,8 @@ export default function SupabaseProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [supabase] = useState(() => createClientComponentClient());
+
+  const supabase = createClientComponentClient();
   const [session, setSession] = useState<Session | null>(null);
   const router = useRouter();
 
@@ -35,20 +33,20 @@ export default function SupabaseProvider({
     return () => {
       subscription.unsubscribe();
     };
-  }, [router, supabase]);
+  }, [router]);
 
   return (
-    <Context.Provider value={{ supabase, session }}>
+    <Context.Provider value={{ session }}>
       <>{children}</>
     </Context.Provider>
   );
 }
 
-export const useSupabase = () => {
+export const useSessionSubscription = () => {
   let context = useContext(Context);
 
   if (context === undefined) {
-    throw new Error("useSupabase must be used inside SupabaseProvider");
+    throw new Error("useSessionSubscription must be used inside SupabaseProvider");
   }
 
   return context;
