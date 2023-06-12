@@ -18,12 +18,15 @@ const Categories = () => {
 export default Categories;
 
 const CategoryListWrapper = styled.div`
+  
+  max-width: 100%;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
+  justify-content: left;
   gap: .25rem;
   padding: .25rem 0;
   margin: 1rem 0;
-  justify-content: left;
 `;
 
 const CategoryListItem = styled(Link)`

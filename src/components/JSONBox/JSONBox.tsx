@@ -10,4 +10,6 @@ const JSONBoxComponent = styled.pre`
   padding: 1rem;
 `;
 
-export default (props:any) => <JSONBoxComponent>{props.children}</JSONBoxComponent>;
+const JSONBox = (props:any) => <JSONBoxComponent>{props.children}</JSONBoxComponent>;
+
+export default JSONBox;

@@ -1,40 +1,21 @@
-'use client'
-import React from 'react'
-import { createClientComponentClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import PostRow from '@blog/components/postRow/PostRow';
-import { styled } from 'styled-components';
+import React, { Suspense } from 'react'
 import { Button } from '@blog/components/button/Button';
 import Link from 'next/link';
+import { Controls } from './components/Controls';
+import PostListFeed from './components/PostListFeed';
+import Spinner from '../../components/spinner/Spinner';
 
 export default async function Admin() {
 
-  const supabase = createClientComponentClient();
-
-  const { data: posts } = await supabase.from('posts').select();
-
   return (
     <>
-      <h1>Admin / Posts</h1>
-      <PostList>
-        {posts?.map(post => <PostRow post={post}/>)}
-      </PostList>
+      <h1>Admin</h1>
+      <Suspense fallback={<Spinner />}>
+        <PostListFeed />
+      </Suspense>
       <Controls>
-        <Link href={`/admin/post/create`}><Button>+ Create</Button></Link>
+        <Link href={`/admin/posts/create`}><Button>+ Create</Button></Link>
       </Controls>
     </>
   )
-}
-
-const PostList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-`;
-
-const Controls = styled.div`
-  display: flex;
-  gap: .25rem;
-  padding:.5rem;
-  justify-content: right;
-`
-
+  }

@@ -1,15 +1,24 @@
 'use client'
 
+import { Variant, getVariant } from "@blog/app/styled/theme";
 import styled from "@emotion/styled";
 
-export const Button = styled.button`
+type ButtonProps = { variant?: Variant }
+
+export const Button = styled.button<ButtonProps>`
   border: none;
-  padding: .5rem;
-  border-radius: 4px;
   cursor: pointer;
-  background-color: #29ae82;
+  border-radius: 4px;
+
+  padding: ${props => props.theme.gridSize * 2}rem;
+  /* background-color: ${props => props.theme.colors[getVariant(props)].dark}; */
+  background-color: transparent;
+  border: 1px solid;
+  border-color: ${props => props.theme.colors[getVariant(props)].light};
 
   &:hover {
-    background-color: #35c495;
+    background-color: ${props => props.theme.colors[getVariant(props)].light};
   }
+
+  transition: all .1s ease;
 `

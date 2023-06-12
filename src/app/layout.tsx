@@ -4,6 +4,7 @@ import Navbar from "@blog/components/navbar/Navbar";
 import { Nunito } from "next/font/google"
 import './global.css';
 import StyledComponentsRegistry from "./styled/StyledComponentRegistry";
+import BlogThemeProvider from "./styled/ThemeProvider";
 
 export const revalidate = 0;
 
@@ -24,14 +25,16 @@ const RootLayout = async ({
 }) => (
   <html lang="en" style={nunito.style}>
     <body>
-      <StyledComponentsRegistry>
-        <SupabaseProvider>
-          <Navbar />
-          <Content>
-            {children}
-          </Content>
-        </SupabaseProvider>
-      </StyledComponentsRegistry>
+      <BlogThemeProvider>
+        <StyledComponentsRegistry>
+            <SupabaseProvider>
+              <Navbar />
+              <Content>
+                {children}
+              </Content>
+            </SupabaseProvider>
+        </StyledComponentsRegistry>
+      </BlogThemeProvider>
     </body>
 
   </html>

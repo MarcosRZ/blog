@@ -37,6 +37,8 @@ export async function middleware(req: NextRequest) {
     redirectUrl.searchParams.set(`redirectedFrom`, req.nextUrl.pathname);
     return NextResponse.redirect(redirectUrl);
   }
+
+  return res;
 }
 
 const hasRequiredLevels = (userLevels: string[], requiredLevels: string[]) => {

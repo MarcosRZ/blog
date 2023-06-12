@@ -5,7 +5,10 @@ const nextConfig = {
   },
   compiler: {
     styledComponents: true,
-  }
+  },
+  images: {
+    domains: ['github.com', 'drive.google.com', 'gmvmiwnzkcvzkmqykvte.supabase.co']
+  },
 }
 
 module.exports = nextConfig

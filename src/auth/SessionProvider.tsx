@@ -33,7 +33,7 @@ export default function SupabaseProvider({
     return () => {
       subscription.unsubscribe();
     };
-  }, [router]);
+  }, [router, supabase.auth]);
 
   return (
     <Context.Provider value={{ session }}>

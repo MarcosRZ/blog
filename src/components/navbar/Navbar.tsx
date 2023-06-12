@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React from 'react'
 import { useRouter } from 'next/navigation';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import Image from 'next/image';
 const Navbar = () => {
 
   const supabase = createClientComponentClient();
@@ -20,9 +21,11 @@ const Navbar = () => {
     <NavbarWrapper>
       <NavbarContent>
         <NavbarLeft>
-          <NavbarLinkItem href={'/'}>Home</NavbarLinkItem>
-          <NavbarLinkItem href={'/categories'}>Categories</NavbarLinkItem>
-          <NavbarLinkItem href={'/about'}>About</NavbarLinkItem>
+          <NavbarLinkItem href={'/'}>
+            <Image style={{borderRadius: '50%', border: '2px solid', boxShadow: '0 0 4px var(--primary-8)'}} height={60} width={60} src="/marcosrz.jpeg" alt="brand logo"/>
+            <span>Marcos Rz.</span>
+          </NavbarLinkItem>
+          <NavbarLinkItem href={'/blog'}>Blog</NavbarLinkItem>
           <NavbarLinkItem href={'/contact'}>Contact</NavbarLinkItem>
           {/* <NavbarLinkItem href={'/admin'}>Admin</NavbarLinkItem> */}
         </NavbarLeft>
@@ -39,14 +42,17 @@ const Navbar = () => {
 }
 
 const NavbarWrapper = styled.div`
+  font-weight: bold;
   position: fixed;
   top: 0;
   width:100%;
   display:flex;
   flex-direction: row;
   justify-content: center;
-  background-color: #434343;
+  background-color: var(--gray-3);
   color: white;
+  box-shadow: 0px 0px 5px var(--primary-8);
+  z-index: 10;
 `;
 
 const NavbarContent = styled.div`
@@ -71,29 +77,41 @@ const NavbarRight = styled.div`
 `;
 
 const NavbarLinkItem = styled(Link)`
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
   color: #DDD;
   font-size: large;
   cursor: pointer;
   padding: .5rem;
   border-bottom: 2px solid transparent;
 
+  transition: all .4s ease;
+
   &:hover {
-    color: aquamarine;
-    border-bottom: 2px solid aquamarine;
+    color: var(--primary-8);
+    border-bottom: 2px solid var(--primary-8);
   }
 `;
 
-const NavbarButtonItem = styled.button`
-  border: none;
-  background: none;
-  color: #DDD;
-  font-size: large;
-  cursor: pointer;
-  padding: .5rem;
+const NavbarButtonItem = styled.div`
+
+    background-color: transparent;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    align-items: center;
+    color: #DDD;
+    font-size: large;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: all .4s ease;
+    border-bottom: 2px solid transparent;
+    border-radius: none;
 
   &:hover {
-    color: aquamarine;
-    border-bottom: 2px solid aquamarine;
+    color: var(--primary-8);
+    border-bottom: 2px solid var(--primary-8);
   }
 `;
 
